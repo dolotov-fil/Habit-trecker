@@ -1,27 +1,57 @@
-import React from 'react'
-import moon from './../../img/icons/moon.svg';
-import sun from './../../img/icons/sun.svg';
-import './Style.css'
+import React from "react";
+
+import "./Style.css";
+import { NavLink } from "react-router-dom";
+import BtnDarkMode from "../btnDarkMode/btnDarkMode";
 
 export default function Navbar() {
-    return (
-        <nav className="nav">
-            <div className="container">
-                <div className="nav-row">
-                    <a href="./index.html" className="logo"><strong>Freelancer</strong> portfolio</a>
+  const activeLink = "nav-list__link nav-list__link--active";
+  const normaLink = "nav-list__link ";
 
-                    <button className="dark-mode-btn">
-                        <img src={sun} alt="Light mode" className="dark-mode-btn__icon" />
-                        <img src={moon} alt="Dark mode" className="dark-mode-btn__icon" />
-                    </button>
+  return (
+    <nav className="nav">
+      <div className="container">
+        <div className="nav-row">
+          <NavLink to="/" className="logo">
+            <strong>Habit</strong>  tracker 
+          </NavLink>
 
-                    <ul className="nav-list">
-                        <li className="nav-list__item"><a href="./index.html" className="nav-list__link nav-list__link--active">Home</a></li>
-                        <li className="nav-list__item"><a href="./projects.html" className="nav-list__link">Projects</a></li>
-                        <li className="nav-list__item"><a href="./contacts.html" className="nav-list__link">Contacts</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    )
+         <BtnDarkMode/>
+
+          <li className="nav-list__item">
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? activeLink : normaLink)}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li className="nav-list__item">
+            <NavLink
+              to="/projects"
+              className={({ isActive }) => (isActive ? activeLink : normaLink)}
+            >
+              Habit
+            </NavLink>
+          </li>
+          <li className="nav-list__item">
+            <NavLink
+              to="/contacts"
+              className={({ isActive }) => (isActive ? activeLink : normaLink)}
+            >
+              Cabinet
+            </NavLink>
+          </li>
+          <li className="nav-list__item">
+            <NavLink
+              to="/login"
+              className={({ isActive }) => (isActive ? activeLink : normaLink)}
+            >
+              Sign in
+            </NavLink>
+          </li>
+        </div>
+      </div>
+    </nav>
+  );
 }

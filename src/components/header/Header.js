@@ -1,5 +1,6 @@
 import React from 'react'
 import './Style.css'
+import BtnGitHab from '../btnGitHab/btnGitHab'
 
 export default function Header() {
   return (
@@ -7,13 +8,14 @@ export default function Header() {
        <header className="header">
         <div className="header__wrapper">
             <h1 className="header__title">
-                <strong>Hi, my name is <em>Fil</em></strong><br />
-                a frontend developer
+                <strong> <em>Hi, let's create </em>   </strong><br />
+                Habits
             </h1>
             <div className="header__text">
-                <p>with passion for learning and creating.</p>
+                <p>let's start with the first habit   </p>
             </div>
-            <a href="#!" className="btn">Download CV</a>
+            <a href="/create" className="btn">Create a habit</a>
+           
         </div>
     </header>
 

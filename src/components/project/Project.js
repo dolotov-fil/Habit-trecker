@@ -1,5 +1,5 @@
 import React from 'react'
-import project01 from './../../img/projects/01.jpg';
+
 
 export default function Project({title, img}) {
     return (

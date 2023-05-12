@@ -1,29 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react';
+import './StyleCon.css'
 
-export default function Contacts() {
+function Contacts() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
+
+  const handleSaveProfile = (event) => {
+    event.preventDefault();
+   
+    const formData = {
+      name: name,
+      email: email,
+      phone: phone,
+      address: address
+    }
+    
+    alert(`Данные профиля: ${JSON.stringify(formData)}`);
+  }
+
   return (
-    <div>
-         <main className="section">
-        <div className="container">
-                <h1 className="title-1">Contacts</h1>
-
-                <ul className="content-list">
-                    <li className="content-list__item">
-                        <h2 className="title-2">Location</h2>
-                        <p>Moscow, Russia</p>
-                    </li>
-                    <li className="content-list__item">
-                        <h2 className="title-2">Telegram / WhatsApp</h2>
-                        <p><a href="tel:+79051234567">+7 (905) 123-45-67</a></p>
-                    </li>
-                    <li className="content-list__item">
-                        <h2 className="title-2">Email</h2>
-                        <p><a href="mailto:webdev@protonmail.com">webdev@protonmail.com</a></p>
-                    </li>
-                </ul>
-
+    <div className="profile">
+      <h1 className='likab'>Personai Area</h1>
+      <form onSubmit={handleSaveProfile}>
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input type="text" id="name" name="name" value={name} onChange={(event) => setName(event.target.value)} />
         </div>
-    </main>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input type="email" id="email" name="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+        </div>
+        <div className="form-group additional-fields">
+          <label htmlFor="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" value={phone} onChange={(event) => setPhone(event.target.value)} />
+        </div>
+        <div className="form-group additional-fields">
+          <label htmlFor="address">adres:</label>
+          <input type="text" id="address" name="address" value={address} onChange={(event) => setAddress(event.target.value)} />
+        </div>
+        <button type="button" id="edit-profile-btn">Edit profile</button>
+        <button type="submit">Save</button>
+      </form>
     </div>
-  )
+  );
 }
+
+export default Contacts;

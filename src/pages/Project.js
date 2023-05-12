@@ -1,29 +1,29 @@
-import React from 'react'
-import img from './../img/projects/02-big.jpg';
-import BtnGitHab from '../components/btnGitHab/btnGitHab';
-
-
-
-
+import React from "react";
+import img from "./../img/projects/02-big.jpg";
+import BtnGitHab from "../components/btnGitHab/btnGitHab";
+import { useParams } from "react-router-dom";
+import {projects} from'../helpers/projectsList'
 
 export default function Project() {
-    return (<main className="section">
-        <div className="container">
-            <div className="project-details">
+  const { id } = useParams();
+  const project = projects[id]
+  
 
-                <h1 className="title-1">Video service</h1>
+  return (
+    <main className="section">
+      <div className="container">
+        <div className="project-details">
+          <h1 className="title-1">{project.habit}</h1>
 
-                <img src={img} alt="" className="project-details__cover" />
+          <img src={img} alt={project.habit}className="project-details__cover" />
 
-                <div className="project-details__desc">
-                    <p>Skills: React, Node.js, MongoDB</p>
-                </div>
+          <div className="project-details__desc">
+            <p>{project.skills}</p>
+          </div>
 
-              <BtnGitHab/>
-
-            </div>
+          <BtnGitHab link="https://github.com/" />
         </div>
+      </div>
     </main>
-
-    )
+  );
 }
